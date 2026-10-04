@@ -1,2 +1,43 @@
-# TheSortingBat
-A RetroBat Directory Shortcut Wizard To Simplify &amp; Automate Emulator / PC Gaming Directory Management | Part of the BatCave Suite
+# The Sorting Bat / BatBuilder
+### A RetroBat Directory Shortcut Wizard & Folder Organizer
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+An automated post-install setup script to structure directory hierarchies, configure standard shortcuts, and prep launch pipelines for RetroBat quickly to save you tons of time and energy
+
+---
+
+## What It Does
+* **Automated Hub Scaffolding:** Instantly constructs a clean `_GamingQuickAccess` master directory on your system root.
+* **No-Bloat Direct Shortcuts:** Generates clean `.lnk` pointers for the most known and utilized standalone emulators, console ROMs, save directories, and backups without clutter.
+* **Auxiliary Support:** Implements dedicated drop-zones for mods, texture packs, game tools, and controller utilities with built-in helper text files.
+* **Dynamic Game Detection:** Automatically detects existing local installations of games like Minecraft (including Prism Launcher) and Terraria to map direct user-data paths without breaking if you don't have them.
+
+---
+
+## Prerequisites & Upstream Projects Recommended:
+* [RetroBat Official](https://www.retrobat.org) - EmulationStation frontend
+* [HidHide (Nefarius)](https://github.com/nefarius/HidHide) - Controller device cloaking
+* [XOutput](https://github.com/csutorasa/XOutput) - DirectInput to XInput wrapper
+* [Prism Launcher](https://prismlauncher.org) - Custom Minecraft instance management
+
+---
+
+## Quickstart Guide
+1. Install RetroBat via its official setup installer to the default drive location (`C:\RetroBat`).
+2. Clone or download this repository to your system.
+3. Unzip `TheSortingBat.zip`.
+4. Right-click `TheSortingBat.bat` and select **Run as Administrator** *(REQUIRED to create shortcuts and folders in the root drive)*.
+5. Populate your game folders and run your titles through the `_GamingQuickAccess` master folder (`C:\_GamingQuickAccess`).
+
+> **Tip:** Want to skip the theatrical CLI intro? Run `GottaGoFast/FastBatBuild.bat` instead for an instant build.
+> p.s. Shame on you, I worked really hard on that UX... /hj
+
+---
+
+## License
+Distributed under the **GNU General Public License v3.0 (GPLv3)**. See [`LICENSE`](LICENSE) for more information.
+
+---
+Intended and tested for Windows systems
+Created by **Hypro**
