@@ -43,7 +43,7 @@ An automated post-install setup script to structure directory hierarchies, confi
 
 ### 📺 Setup Walkthrough & Demo
 
-> [![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/maxresdefault.jpg)](https://youtu.be/jMe_oAwhhF0)
+[![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/maxresdefault.jpg)](https://youtu.be/jMe_oAwhhF0)
 
 > **Tip:** Want to skip the theatrical CLI intro? Run `GottaGoFast/FastBatBuild.bat` instead for an instant build.
 ---
