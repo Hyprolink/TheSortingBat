@@ -34,11 +34,18 @@ An automated post-install setup script to structure directory hierarchies, confi
 ---
 
 ## Quickstart Guide
+
 1. Install RetroBat via its official setup installer to the default drive location (`C:\RetroBat`).
 2. Clone or download this repository to your system.
 3. Unzip `TheSortingBat.zip`.
 4. Right-click `TheSortingBat.bat` and select **Run as Administrator** *(REQUIRED to create shortcuts and folders in the root drive)*.
 5. Populate your game folders and run your titles through the `_GamingQuickAccess` master folder (`C:\_GamingQuickAccess`).
+
+### 📺 Setup Walkthrough & Demo
+
+[![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/maxresdefault.jpg)](https://youtu.be/jMe_oAwhhF0)
+
+> **Prefer a visual guide?** [Click here to watch the complete step-by-step setup on YouTube](https://youtu.be/jMe_oAwhhF0).
 
 > **Tip:** Want to skip the theatrical CLI intro? Run `GottaGoFast/FastBatBuild.bat` instead for an instant build.
 ---
