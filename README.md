@@ -17,6 +17,12 @@ An automated post-install setup script to structure directory hierarchies, confi
 * **Auxiliary Support:** Implements dedicated drop-zones for mods, texture packs, game tools, and controller utilities with built-in helper text files.
 * **Dynamic Game Detection:** Automatically detects existing local installations of games like Minecraft (including Prism Launcher) and Terraria to map direct user-data paths without breaking if you don't have them.
 
+> ### 🛡️ Clean, Transparent & Non-Invasive
+> * **No Background Daemons:** Does not install persistent background services, startup entries, or background tasks.
+> * **Zero Binary Bloat:** Runs strictly native Windows Batch and PowerShell scripts; no hidden `.exe`, `.dll`, or bundled payload files.
+> * **Purely Additive:** Builds standard directory structures and shortcut pointers (`.lnk`); does not alter, patch, or overwrite existing game files or emulators.
+> * **Fully Auditable:** 100% human-readable source code. Inspect [`src/SortingBatBackend.ps1`](src/SortingBatBackend.ps1) before running to see exactly what every line touches.
+
 ---
 
 ## Prerequisites & Upstream Projects Recommended:
