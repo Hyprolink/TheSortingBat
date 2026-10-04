@@ -7,6 +7,10 @@ An automated post-install setup script to structure directory hierarchies, confi
 
 ---
 
+> ### 📦 Just want to run the tool?
+> **Do not download files individually from the file list above!**  
+> Grab the ready-to-run package directly from the **[Latest Release](../../releases/latest)**, extract `TheSortingBat.zip`, and run the launcher.
+
 ## What It Does
 * **Automated Hub Scaffolding:** Instantly constructs a clean `_GamingQuickAccess` master directory on your system root.
 * **No-Bloat Direct Shortcuts:** Generates clean `.lnk` pointers for the most known and utilized standalone emulators, console ROMs, save directories, and backups without clutter.
