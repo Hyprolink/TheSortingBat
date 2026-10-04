@@ -31,6 +31,7 @@ An automated post-install setup script to structure directory hierarchies, confi
 5. Populate your game folders and run your titles through the `_GamingQuickAccess` master folder (`C:\_GamingQuickAccess`).
 
 > **Tip:** Want to skip the theatrical CLI intro? Run `GottaGoFast/FastBatBuild.bat` instead for an instant build.
+---
 > p.s. Shame on you, I worked really hard on that UX... /hj
 
 ---
@@ -40,4 +41,5 @@ Distributed under the **GNU General Public License v3.0 (GPLv3)**. See [`LICENSE
 
 ---
 Intended and tested for Windows systems
+---
 Created by **Hypro**
