@@ -8,7 +8,7 @@ An automated post-install setup script to structure directory hierarchies, confi
 ---
 
 > ### 📦 Just want to run the tool?
-> **Do not download files individually from the file list above!**  
+> **Do not download files individually from the general file list!**  
 > Grab the ready-to-run package directly from the **[Latest Release](../../releases/latest)**, extract `TheSortingBat.zip`, and run the launcher.
 
 ## What It Does
