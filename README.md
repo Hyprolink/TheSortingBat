@@ -42,8 +42,7 @@ An automated post-install setup script to structure directory hierarchies, confi
 5. Populate your game folders and run your titles through the `_GamingQuickAccess` master folder (`C:\_GamingQuickAccess`).
 
 ### 📺 Setup Walkthrough & Demo
-
-[![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwwhF0/maxresdefault.jpg?v=2)](https://youtu.be/jMe_oAwwhF0)
+[![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/hqdefault.jpg)](https://www.youtube.com/watch?v=jMe_oAwhhF0)
 
 > **Tip:** Want to skip the theatrical CLI intro? Run `GottaGoFast/FastBatBuild.bat` instead for an instant build.
 ---
