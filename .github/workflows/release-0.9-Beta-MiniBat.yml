@@ -1,0 +1,72 @@
+name: Release Verification and Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-verify-and-release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Package Release and Generate Hashes
+        shell: pwsh
+        run: |
+          # 1. Target the exact staged source directory
+          $sourceDir = "src/0.9 Beta - MiniBat"
+          if (-not (Test-Path $sourceDir)) {
+            Write-Error "Staged source directory not found at $sourceDir"
+            exit 1
+          }
+
+          # 2. Stage files into a clean temporary directory for zipping
+          $stagingDir = "$env:RUNNER_TEMP\TheSortingBat_v0.9_Beta_MiniBat"
+          New-Item -ItemType Directory -Path $stagingDir -Force | Out-Null
+          Copy-Item -Path "$sourceDir\*" -Destination $stagingDir -Recurse -Force
+
+          # 3. Create zip archive in workspace
+          $zipPath = "$env:GITHUB_WORKSPACE\TheSortingBat_v0.9_Beta_MiniBat.zip"
+          Compress-Archive -Path "$stagingDir\*" -DestinationPath $zipPath -Force
+
+          # 4. Generate dynamic SHA-256 checksum and size
+          $actualHash = (Get-FileHash -Algorithm SHA256 $zipPath).Hash
+          $fileSize = "{0:N0} KB" -f ((Get-Item $zipPath).Length / 1KB)
+
+          # 5. Build verification helper artifacts
+          New-Item -ItemType Directory -Path "$env:GITHUB_WORKSPACE\Authenticity" -Force | Out-Null
+          
+          $integrityText = @"
+============================================================
+TheSortingBat v0.9 Beta Release Integrity (Automated Build)
+============================================================
+Package:   TheSortingBat_v0.9_Beta_MiniBat.zip
+Size:      ~$fileSize
+Algorithm: SHA-256
+Hash:      $actualHash
+
+Verification Command (PowerShell):
+(Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq "$actualHash"
+============================================================
+"@
+          $integrityText | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\ReleaseIntegrity-Beta.txt" -Encoding utf8
+          
+          "(Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq `"$actualHash`"" | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\CompareHashCommand_SortingBat.txt" -Encoding utf8
+
+          Write-Host "Automated build complete. SHA-256: $actualHash"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            TheSortingBat_v0.9_Beta_MiniBat.zip
+            Authenticity/ReleaseIntegrity-Beta.txt
+            Authenticity/CompareHashCommand_SortingBat.txt
+          draft: false
+          prerelease: true
+          generate_release_notes: true
