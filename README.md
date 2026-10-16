@@ -64,6 +64,6 @@ The Sorting Bat is an independent, open-source parody utility built for the retr
 ---
 
 ## ⚖️ Attribution & License
-* **Development & Architecture:** Caden B. ([@Hyprolink](https://github.com/Hyprolink))
+* **Development & Architecture:** ([@Hyprolink](https://github.com/Hyprolink))
 * **Mascot Design & Character Art (Berry Sorter):** MapleTheMage
 * **License:** Distributed under the [GNU General Public License v3.0 (GPLv3)](LICENSE).
