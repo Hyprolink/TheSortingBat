@@ -1,59 +1,69 @@
 # The Sorting Bat / BatBuilder
-### A RetroBat Directory Shortcut Wizard & Folder Organizer
+### A Zero-Bloat Gaming Hub & Directory Organizer
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6.svg)]()
+[![Status](https://img.shields.io/badge/Release-v0.9--Beta-brightgreen.svg)](https://github.com/Hyprolink/TheSortingBat/releases)
 
-An automated post-install setup script to structure directory hierarchies, configure standard shortcuts, and prep launch pipelines for RetroBat quickly to save you tons of time and energy
+An automated setup utility that consolidates emulators, PC storefronts, and standalone titles into a single organized launchpad (`_GamingQuickAccess`) using only native Windows shortcuts and folder drop-zones.
 
 ---
 
 > ### 📦 Just want to run the tool?
-> **Do not download files individually from the general file list!**  
-> Grab the ready-to-run package directly from the **[Latest Release](../../releases/latest)**, extract `TheSortingBat.zip`, and run the launcher.
+> Grab the package directly from the **[Latest Release](../../releases/latest)**, extract `TheSortingBat_v0.9_Beta_MiniBat.zip`, and launch your preferred runner.
 
-## What It Does
-* **Automated Hub Scaffolding:** Instantly constructs a clean `_GamingQuickAccess` master directory on your system root.
-* **No-Bloat Direct Shortcuts:** Generates clean `.lnk` pointers for the most known and utilized standalone emulators, console ROMs, save directories, and backups without clutter.
-* **Auxiliary Support:** Implements dedicated drop-zones for mods, texture packs, game tools, and controller utilities with built-in helper text files.
-* **Dynamic Game Detection:** Automatically detects existing local installations of games like Minecraft (including Prism Launcher) and Terraria to map direct user-data paths without breaking if you don't have them.
-
-> ### 🛡️ Clean, Transparent & Non-Invasive
-> * **No Background Daemons:** Does not install persistent background services, startup entries, or background tasks.
-> * **Zero Binary Bloat:** Runs strictly native Windows Batch and PowerShell scripts; no hidden `.exe`, `.dll`, or bundled payload files.
-> * **Purely Additive:** Builds standard directory structures and shortcut pointers (`.lnk`); does not alter, patch, or overwrite existing game files or emulators.
-> * **Fully Auditable:** 100% human-readable source code. Inspect [`src/SortingBatBackend.ps1`](src/SortingBatBackend.ps1) before running to see exactly what every line touches.
+## 📺 Video Walkthrough
+[![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/hqdefault.jpg)](https://www.youtube.com/watch?v=jMe_oAwhhF0)
 
 ---
 
-## Prerequisites & Upstream Projects Recommended:
-* [RetroBat Official](https://www.retrobat.org) - EmulationStation frontend
-* [HidHide (Nefarius)](https://github.com/nefarius/HidHide) - Controller device cloaking
-* [XOutput](https://github.com/csutorasa/XOutput) - DirectInput to XInput wrapper
-* [Prism Launcher](https://prismlauncher.org) - Custom Minecraft instance management
+## What It Does
+* **Master Hub Scaffolding:** Instantly constructs a clean `_GamingQuickAccess` directory automatically pinned to File Explorer's Quick Access.
+* **Smart Emulator & ROM Mapping:** Connects directly with RetroBat if present, or creates standalone organized drop-zones if you run clean.
+* **Launcher & PC Game Detection:** Automatically discovers and maps shortcuts for Steam, Epic Games, GOG Galaxy, Minecraft (including Prism Launcher), and Terraria / tModLoader.
+* **Auxiliary Support:** Creates structured drop-zones for mods, texture packs, game tools, and controller software with built-in helper text files.
+
+> ### 🛡️ Clean, Transparent & Non-Invasive
+> * **Zero Background Services:** Installs no persistent services, scheduled tasks, or startup bloat.
+> * **Safe Shortcut Scanning:** Discovers paths via read-only queries strictly for `.lnk` and `.url` files; never alters original game directories or user binaries.
+> * **Instant Rollback:** Run `Uninstall\Uninstall.bat` to instantly delete the hub directory without leaving leftover files or touching your saves.
+
+---
+
+## 🛠️ Recommended Ecosystem & Integrations (Optional)
+The Sorting Bat works out of the box with zero external dependencies, but integrates seamlessly with:
+* [RetroBat Official](https://www.retrobat.org) — Automated all-in-one EmulationStation frontend
+* [Prism Launcher](https://prismlauncher.org) — Custom Minecraft instance management
+* [tModLoader on Steam](https://store.steampowered.com/app/1281930/tModLoader/) — Dedicated Terraria modding engine and launcher
+* [Tailscale](https://tailscale.com) — Zero-config peer-to-peer mesh VPN for zero-port-forward LAN co-op
+* [Sunshine](https://github.com/LizardByte/Sunshine) — Self-hosted, low-latency game streaming host
+* [Moonlight Game Streaming](https://moonlight-stream.org) — Open-source game streaming client for local and remote play
+* [HidHide (Nefarius)](https://github.com/nefarius/HidHide) — Controller device cloaking to prevent double-input issues
+* [XOutput](https://github.com/csutorasa/XOutput) — DirectInput to XInput controller mapping wrapper
 
 ---
 
 ## Quickstart Guide
 
-1. Install RetroBat via its official setup installer to the default drive location (`C:\RetroBat`).
-2. Clone or download this repository to your system.
-3. Unzip `TheSortingBat.zip`.
-4. Right-click `TheSortingBat.bat` and select **Run as Administrator** *(REQUIRED to create shortcuts and folders in the root drive)*.
-5. Populate your game folders and run your titles through the `_GamingQuickAccess` master folder (`C:\_GamingQuickAccess`).
+1. Download **`TheSortingBat_v0.9_Beta_MiniBat.zip`** from the **[Latest Release](../../releases/latest)**.
+2. Extract the archive to any folder on your PC.
+3. Launch your preferred runner:
+   * **`TheSortingBat.bat`**: Full interactive wizard with dialogue.
+   * **`FastBatBuild.bat`**: Headless instant generation (5–8 seconds).
+4. Access your consolidated folders directly from Windows Explorer under **`_GamingQuickAccess`**.
 
-### 📺 Setup Walkthrough & Demo
-[![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/hqdefault.jpg)](https://www.youtube.com/watch?v=jMe_oAwhhF0)
+> **Note on Uninstalling:** Run **`Uninstall\Uninstall.bat`** to remove `_GamingQuickAccess`. After the script completes, right-click the leftover sidebar shortcut in File Explorer and select **Unpin from Quick access** (or **Unpin from Home**).
 
-> **Tip:** Want to skip the theatrical CLI intro? Run `GottaGoFast/FastBatBuild.bat` instead for an instant build.
----
-> p.s. Shame on you, I worked really hard on that UX... /hj
+For a full historical record of version updates and fixes, see the **[Changelog](CHANGELOG.md)**.
 
 ---
 
-## License
-Distributed under the **GNU General Public License v3.0 (GPLv3)**. See [`LICENSE`](LICENSE) for more information.
+## 📜 Legal Disclaimer & Parody Notice
+The Sorting Bat is an independent, open-source parody utility built for the retro-gaming and PC gaming community. It is not affiliated with, endorsed by, or associated with Warner Bros., Nintendo, or any of their official properties, characters, or franchises. All trademarks belong to their respective holders.
 
 ---
-Intended and tested for Windows systems
----
-Created by **Hypro**
+
+## ⚖️ Attribution & License
+* **Development & Architecture:** Caden B. ([@Hyprolink](https://github.com/Hyprolink))
+* **Mascot Design & Character Art (Berry Sorter):** MapleTheMage
+* **License:** Distributed under the [GNU General Public License v3.0 (GPLv3)](LICENSE).
