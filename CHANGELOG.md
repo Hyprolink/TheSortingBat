@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🛡️ Safety, Transparency & Security
 * **Non-Destructive Safe Rollback (`Uninstall\Uninstall.bat`):** Completely deletes the generated `_GamingQuickAccess` hub with zero leftover clutter without ever touching your original game installs, RetroBat roots, or save files. Prompts with clear manual instructions on how to unpin from the sidebar.
 * **Separated Engine Architecture:** Codebase restructured into dedicated `_engine` subfolders (`BackEnd`, `_assets`, `Uninstall`), keeping maintenance modular and scripts easy to audit
-* **Cryptographic Verification:** Every release includes SHA-256 integrity checksum files and a PowerShell check command so users can verify their download hasn't been tampered with or modified in transit
+* **Cryptographic Verification:** Every release from Beta and onwards includes SHA-256 integrity checksum files and a PowerShell check command so users can verify their download hasn't been tampered with or modified in transit
 * **Legal & Parody Notice:** Full GPLv3 open-source licensing, community disclaimers, and clear mascot attribution
 
 ---
