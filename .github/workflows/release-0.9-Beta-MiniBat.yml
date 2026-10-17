@@ -5,6 +5,7 @@ on:
     tags:
       - 'v*'
       - 'V*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -36,7 +37,7 @@ jobs:
           Compress-Archive -Path "$stagingDir\*" -DestinationPath $zipPath -Force
 
           # 4. Generate dynamic SHA-256 checksum and size
-          $actualHash = (Get-FileHash -Algorithm SHA256 $zipPath).Hash
+          $actualHash = (Get-FileHash -Algorithm SHA256$zipPath).Hash
           $fileSize = "{0:N0} KB" -f ((Get-Item $zipPath).Length / 1KB)
 
           # 5. Build verification helper artifacts
@@ -55,7 +56,7 @@ Verification Command (PowerShell):
 (Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq "$actualHash"
 ============================================================
 "@
-          $integrityText | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\ReleaseIntegrity-Beta.txt" -Encoding utf8
+          $integrityText \vert{} Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\ReleaseIntegrity-Beta.txt" -Encoding utf8
           
           "(Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq `"$actualHash`"" | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\CompareHashCommand_SortingBat.txt" -Encoding utf8
 
@@ -63,12 +64,12 @@ Verification Command (PowerShell):
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             TheSortingBat_v0.9_Beta_MiniBat.zip
             Authenticity/ReleaseIntegrity-Beta.txt
             Authenticity/CompareHashCommand_SortingBat.txt
-            Security/0.9 Beta - MiniBat/VirusTotal Evaluation Links.md
           draft: false
           prerelease: true
           generate_release_notes: true
