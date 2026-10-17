@@ -1,0 +1,11 @@
+============================================================
+TheSortingBat v0.9 Beta Release Integrity
+============================================================
+Package:   TheSortingBat_v0.9_Beta_MiniBat.zip
+Size:      ~246 KB
+Algorithm: SHA-256
+Hash:      4F6C674CB89CF77A4D25DC1DD258237B18D5DCDA77AEC3344800DC27D24A96D1
+
+Verification Command (PowerShell):
+(Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq "4F6C674CB89CF77A4D25DC1DD258237B18D5DCDA77AEC3344800DC27D24A96D1"
+============================================================
