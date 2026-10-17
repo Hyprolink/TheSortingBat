@@ -67,6 +67,7 @@ Verification Command (PowerShell):
             TheSortingBat_v0.9_Beta_MiniBat.zip
             Authenticity/ReleaseIntegrity-Beta.txt
             Authenticity/CompareHashCommand_SortingBat.txt
+            Security/0.9 Beta - MiniBat/VirusTotal Evaluation Links.md
           draft: false
           prerelease: true
           generate_release_notes: true
