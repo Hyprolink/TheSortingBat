@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   * Automatically separates vanilla Terraria and tModLoader into dedicated launch folders
   * Uses native NTFS directory junctions (`mklink /J`) rather than symbolic links to bypass OneDrive desktop-sync looping bugs and permission crashes
 * **Dedicated Launchers Hub:** Promoted `_Launchers` straight to the root of `_GamingQuickAccess` to keep Steam, Epic Games, GOG, and custom launchers accessible in one spot
-* **Non-Gaming Creator Separation:** Added an `_OtherTools` drop-zone so creative and development software (like Blender or editing tools) doesn't clutter up gaming storefronts
+* **Non-Gaming Creator Separation:** Added an `_OtherTools` drop-zone so creative and development software (like Blender, OBS, or editing tools) doesn't clutter up gaming storefronts
 
 ### 🕹️ RetroBat & Emulation Integration
 * **Conditional Folder Scaffolding:** Emulation folders (`saves`, `roms`, `backups`, and `_Firmware`) only map to RetroBat if RetroBat is actually installed on your system—keeping your directory clean if you only play standalone PC games
