@@ -55,7 +55,7 @@ Hash:      $actualHash
 Verification Command (PowerShell):
 (Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq "$actualHash"
 ============================================================
-"@
+@"
           $integrityText | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\ReleaseIntegrity-Beta.txt" -Encoding utf8
           
           "(Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq `"$actualHash`"" | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\CompareHashCommand_SortingBat.txt" -Encoding utf8
