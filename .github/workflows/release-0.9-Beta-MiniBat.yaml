@@ -1,0 +1,61 @@
+name: Package and Upload 0.9 Beta MiniBat
+
+on:
+  # Allows manual trigger from the Actions tab
+  workflow_dispatch:
+  # Automatically runs when changes are pushed to the 0.9 Beta src folder or this workflow file
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/0.9 Beta - MiniBat/**'
+      - '.github/workflows/release-0.9-Beta-MiniBat.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository (Preserve Windows CRLF)
+        uses: actions/checkout@v4
+        with:
+          # Critical for Windows .bat files: ensures Git checks out native CRLF line endings
+          fetch-depth: 1
+
+      - name: Build Flat Root Zip and Generate SHA-256 Checksum
+        shell: pwsh
+        run: |
+          $sourceDir = "src\0.9 Beta - MiniBat\*"
+          $zipName = "TheSortingBat_0.9_Beta_MiniBat.zip"
+          $hashFile = "$zipName.sha256"
+
+          # Package the contents directly into the root of the zip using native Windows compression
+          Compress-Archive -Path $sourceDir -DestinationPath $zipName -Force
+
+          # Generate SHA-256 hash using native PowerShell
+          $hash = (Get-FileHash -Path $zipName -Algorithm SHA256).Hash.ToLower()
+          
+          # Format as standard sha256sum output ("<hash>  <filename>") and save in UTF-8 without BOM
+          "$hash  $zipName" | Out-File -FilePath $hashFile -Encoding utf8NoBOM
+
+          # Output the hash and PowerShell verification command to the GitHub Actions Step Summary
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "### 🛡️ Automated CI/CD Integrity Verification (Windows Build)"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "**Artifact:** ``$zipName``"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "**SHA-256:** ``$hash``"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "#### PowerShell Verification Command:"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "``````powershell"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "(Get-FileHash .\$zipName -Algorithm SHA256).Hash -eq '$hash'"
+          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "``````"
+
+      - name: Upload Assets to Existing V0_9-Beta Pre-Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload V0_9-Beta `
+            "TheSortingBat_0.9_Beta_MiniBat.zip" `
+            "TheSortingBat_0.9_Beta_MiniBat.zip.sha256" `
+            --clobber
