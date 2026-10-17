@@ -37,7 +37,7 @@ jobs:
           Compress-Archive -Path "$stagingDir\*" -DestinationPath $zipPath -Force
 
           # 4. Generate dynamic SHA-256 checksum and size
-          $actualHash = (Get-FileHash -Algorithm SHA256$zipPath).Hash
+          $actualHash = (Get-FileHash -Algorithm SHA256 $zipPath).Hash
           $fileSize = "{0:N0} KB" -f ((Get-Item $zipPath).Length / 1KB)
 
           # 5. Build verification helper artifacts
@@ -56,7 +56,7 @@ Verification Command (PowerShell):
 (Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq "$actualHash"
 ============================================================
 "@
-          $integrityText \vert{} Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\ReleaseIntegrity-Beta.txt" -Encoding utf8
+          $integrityText | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\ReleaseIntegrity-Beta.txt" -Encoding utf8
           
           "(Get-FileHash -Algorithm SHA256 .\TheSortingBat_v0.9_Beta_MiniBat.zip).Hash -eq `"$actualHash`"" | Out-File -FilePath "$env:GITHUB_WORKSPACE\Authenticity\CompareHashCommand_SortingBat.txt" -Encoding utf8
 
