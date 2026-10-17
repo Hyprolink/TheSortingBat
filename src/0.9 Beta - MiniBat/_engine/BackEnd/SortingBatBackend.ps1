@@ -81,7 +81,7 @@ function Pin-ToQuickAccess ($folderPath) {
 # 3. Standardize console folders as a list (Mainline Classics & Modern Systems).
 $consoles = @(
     # Arcade & PC
-    "mame", "windows", "epic", "gog", "steam",
+    "mame", "fbneo", "windows", "epic", "gog", "steam",
     
     # Sony
     "psx", "ps2", "ps3", "ps4", "psp", "psvita",
