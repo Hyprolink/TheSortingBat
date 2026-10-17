@@ -10,7 +10,7 @@ An automated setup utility that consolidates emulators, PC storefronts, and stan
 ---
 
 > ### 📦 Just want to run the tool?
-> Grab the package directly from the **[Latest Release](../../releases/latest)** or **[DOWNLOAD THE LATEST RELEASE HERE](https://github.com/Hyprolink/TheSortingBat/releases/download/V0_9-Beta/TheSortingBat_v0.9_Beta_MiniBat.zip)**, extract `TheSortingBat_v0.9_Beta_MiniBat.zip`, and launch your preferred runner.
+> Grab the package directly from the **[Latest Release Page](../../releases/latest)** or **[DOWNLOAD THE LATEST RELEASE HERE](https://github.com/Hyprolink/TheSortingBat/releases/download/V0_9-Beta/TheSortingBat_v0.9_Beta_MiniBat.zip)**, extract `TheSortingBat_v0.9_Beta_MiniBat.zip`, and launch your preferred runner.
 
 ## 📺 Video Walkthrough
 [![Watch the Setup Guide](https://img.youtube.com/vi/jMe_oAwhhF0/hqdefault.jpg)](https://www.youtube.com/watch?v=jMe_oAwhhF0)
