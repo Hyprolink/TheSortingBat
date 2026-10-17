@@ -1,68 +1,36 @@
-name: Package and Upload 0.9 Beta MiniBat
+name: Package and Release
 
 on:
-  # Allows manual trigger from the Actions tab
-  workflow_dispatch:
-  # Automatically runs when changes are pushed to the 0.9 Beta src folder or this workflow file
   push:
-    branches:
-      - main
-    paths:
-      - 'src/0.9 Beta - MiniBat/**'
-      - '.github/workflows/release-0.9-Beta-MiniBat.yml'
+    tags:
+      - 'v*' # Triggers the workflow whenever you push a tag like v1.0.0
 
 permissions:
-  contents: write
+  contents: write # Crucial: Allows GitHub to create a release and upload files
 
 jobs:
-  package-and-release:
-    runs-on: windows-latest
-
+  build-and-release:
+    runs-on: ubuntu-latest
     steps:
-      - name: Force Git CRLF Configuration on Runner
-        shell: pwsh
-        run: git config --global core.autocrlf true
-
-      - name: Checkout Repository (Preserve Windows CRLF)
+      - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-        uses: actions/checkout@v4
-        with:
-          # Critical for Windows .bat files: ensures Git checks out native CRLF line endings
-          fetch-depth: 1
 
-      - name: Build Flat Root Zip and Generate SHA-256 Checksum
-        shell: pwsh
+      - name: Create Zip Archive
         run: |
-          $sourceDir = "src\0.9 Beta - MiniBat\*"
-          $zipName = "TheSortingBat_0.9_Beta_MiniBat.zip"
-          $hashFile = "$zipName.sha256"
+          zip -r artifact.zip src/
+          echo "Successfully zipped /src into artifact.zip"
 
-          # Package the contents directly into the root of the zip using native Windows compression
-          Compress-Archive -Path $sourceDir -DestinationPath $zipName -Force
+      - name: Generate SHA-256 Hash
+        run: |
+          sha256sum artifact.zip > artifact.zip.sha256
+          echo "SHA-256 generated:"
+          cat artifact.zip.sha256
 
-          # Generate SHA-256 hash using native PowerShell
-          $hash = (Get-FileHash -Path $zipName -Algorithm SHA256).Hash.ToLower()
-          
-          # Format as standard sha256sum output ("<hash>  <filename>") and save in UTF-8 without BOM
-          "$hash  $zipName" | Out-File -FilePath $hashFile -Encoding utf8NoBOM
-
-          # Output the hash and PowerShell verification command to the GitHub Actions Step Summary
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "### 🛡️ Automated CI/CD Integrity Verification (Windows Build)"
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "**Artifact:** ``$zipName``"
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "**SHA-256:** ``$hash``"
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "#### PowerShell Verification Command:"
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "``````powershell"
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "(Get-FileHash .\$zipName -Algorithm SHA256).Hash -eq '$hash'"
-          Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value "``````"
-
-      - name: Upload Assets to Existing V0_9-Beta Pre-Release
-        shell: pwsh
+      - name: Create GitHub Release and Upload Files
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifact.zip
+            artifact.zip.sha256
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release upload V0_9-Beta `
-            "TheSortingBat_0.9_Beta_MiniBat.zip" `
-            "TheSortingBat_0.9_Beta_MiniBat.zip.sha256" `
-            --clobber
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
