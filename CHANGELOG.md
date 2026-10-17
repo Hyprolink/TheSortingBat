@@ -40,5 +40,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [v0.1-Alpha] - 2026-10-06
+## [v0.8-Alpha] - 2026-10-06
 - Initial proof-of-concept batch script and folder taxonomy mapping
