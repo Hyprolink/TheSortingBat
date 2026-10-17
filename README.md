@@ -40,6 +40,7 @@ The Sorting Bat works out of the box with zero external dependencies, but integr
 * [Moonlight Game Streaming](https://moonlight-stream.org) — Open-source game streaming client for local and remote play
 * [HidHide (Nefarius)](https://github.com/nefarius/HidHide) — Controller device cloaking to prevent double-input issues
 * [XOutput](https://github.com/csutorasa/XOutput) — DirectInput to XInput controller mapping wrapper
+> **Note on Navigation:** GitHub natively navigates links in the same browser window; use `Ctrl + Click` (or middle-click) on any report link to view the VirusTotal analysis in a separate browser tab.
 
 ---
 
