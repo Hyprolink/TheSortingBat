@@ -19,7 +19,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Force Git CRLF Configuration on Runner
+        shell: pwsh
+        run: git config --global core.autocrlf true
+
       - name: Checkout Repository (Preserve Windows CRLF)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
         uses: actions/checkout@v4
         with:
           # Critical for Windows .bat files: ensures Git checks out native CRLF line endings
