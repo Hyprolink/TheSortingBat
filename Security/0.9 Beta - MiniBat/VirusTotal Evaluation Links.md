@@ -9,7 +9,7 @@
 
 | Deliverable Artifact | SHA-256 Checksum | VirusTotal Direct Audit |
 | :--- | :--- | :--- |
-| `TheSortingBat_v0.9_Beta_MiniBat.zip` | `DA346B7F45A08AADCE53EB534A7674762DC2BA47E33038E9064678A0CEB6897F` | [View Live Package Report](https://www.virustotal.com/gui/file/da346b7f45a08aadce53eb534a7674762dc2ba47e33038e9064678a0ceb6897f) |
+| `TheSortingBat_v0.9_Beta_MiniBat.zip` | `DA346B7F45A08AADCE53EB534A7674762DC2BA47E33038E9064678A0CEB6897F` | [View Live Package Report](https://www.virustotal.com/gui/file/4f6c674cb89cf77a4d25dc1dd258237b18d5dcda77aec3344800dc27d24a96d1) |
 
 ---
 
@@ -27,7 +27,7 @@
 
 | Engine Script | Architecture Role | VirusTotal Direct Audit |
 | :--- | :--- | :--- |
-| `SortingBatBackend.ps1` | Environment discovery, directory mapping, and shortcut generation | [View SortingBatBackend Report](https://www.virustotal.com/gui/file/0a0bc1ffd3dca05f5a8b03eceef296c123dd3dc990f0baab9f8cb5ff987fa447) |
+| `SortingBatBackend.ps1` | Environment discovery, directory mapping, and shortcut generation | [View SortingBatBackend Report](https://www.virustotal.com/gui/file/d74a448b4007100810e85ce1084e1dc5e9ff4d9b383cbb86e405debae7ab7662) |
 | `RollbackBat.ps1` | Hub unpinning, desktop.ini reset, and directory removal engine | [View RollbackBat Report](https://www.virustotal.com/gui/file/dac9f65ab6c2fb4b2473bc6d89167db91603d68682f63e71fef0eba4d672ecde) |
 
 ---
